@@ -47,31 +47,25 @@
 
     <script>
     
-        const form = document.querySelector('.add-items');
-        const itemList = document.querySelector('.plates');
+        const panels = document.querySelectorAll('.panels .panel');
 
-        const items = [];
-
-        function handleFormSubmit(e){
-            e.preventDefault();
-            const text = (this.querySelector('[name=item]')).value
-
-            const item = {
-                text,
-                done: false
-            }
-            items.push(item);
-            console.log(items)
-            this.reset();
+        function toggleOpen(){
+            this.classList.toggle('open');
         }
 
-        function populateList(plates = [],platesList){
-            platesList.innerHtml = plates.map((plate,index)=>{
-                return 
-            }).join('')
+        function toggleActive(e){
+            console.log(e.propertyName);
+            if(e.propertyName.includes('flex'))
+                this.classList.toggle('open-active');
         }
 
-        form.addEventListener('submit',handleFormSubmit);
+        panels.forEach(panel => {
+            panel.addEventListener('click',toggleOpen);
+        });
+
+        panels.forEach(panel => {
+            panel.addEventListener('transitionend',toggleActive);
+        });
         
     </script>
 
