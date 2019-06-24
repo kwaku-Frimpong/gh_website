@@ -45,7 +45,35 @@
         
     </div>
 
-    <script src="./main.js"></script>
+    <script>
+    
+        const form = document.querySelector('.add-items');
+        const itemList = document.querySelector('.plates');
+
+        const items = [];
+
+        function handleFormSubmit(e){
+            e.preventDefault();
+            const text = (this.querySelector('[name=item]')).value
+
+            const item = {
+                text,
+                done: false
+            }
+            items.push(item);
+            console.log(items)
+            this.reset();
+        }
+
+        function populateList(plates = [],platesList){
+            platesList.innerHtml = plates.map((plate,index)=>{
+                return 
+            }).join('')
+        }
+
+        form.addEventListener('submit',handleFormSubmit);
+        
+    </script>
 
 </body>
 </html>
